@@ -47,6 +47,7 @@ class Photo
 			default:
 				$color = imagecolorallocate($this->im, 0, 0, 120);
 		}
+        imageresolution($this->im, self::DPI);
 		imagefill($this->im, 1, 1, $color);
 		$text = "www.sandcomp.com";
 		$white = imagecolorallocate($this->im, 255, 255, 255);
@@ -206,7 +207,7 @@ class PhotoTypeParser
 		$this->count = 0;
 		while (($line= fgets($fh)) !== FALSE)
 		{
-			$data = split(',', $line);
+			$data = explode(',', $line);
 			if (count($data) != 3) continue;
 
 			$this->name_array[$this->count] = $data[0];
